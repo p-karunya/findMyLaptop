@@ -7,6 +7,11 @@ export class BackendStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 
+    const StudentDeveloperPack_lambda_layer = new cdk.aws_lambda.LayerVersion(this, 'ToolboxLayer', {
+      code: cdk.aws_lambda.Code.fromAsset('ApplicationCode/DataLoaders/Layers/StudentDevPack/'),
+      compatibleRuntimes: [cdk.aws_lambda.Runtime.PYTHON_3_12]
+    });
+
     const HackClubToolBox_lambda_layer = new cdk.aws_lambda.LayerVersion(this, 'HackClubToolBoxLayer', {
       code: cdk.aws_lambda.Code.fromAsset('ApplicationCode/DataLoaders/Layers/Toolbox/'),
       compatibleRuntimes: [cdk.aws_lambda.Runtime.PYTHON_3_12]
@@ -22,18 +27,19 @@ export class BackendStack extends cdk.Stack {
       handler: 'Toolbox.lambda_handler',
       code: cdk.aws_lambda.Code.fromAsset('ApplicationCode/DataLoaders/HackClubToolbox'),
       layers: [HackClubToolBox_lambda_layer],
-      timeout: cdk.Duration.seconds(30)
+      timeout: cdk.Duration.seconds(360)
     });
 
     const GithubStudentPack_lambda_fuction = new cdk.aws_lambda.Function(this, 'GithubStudentPack', {
       runtime: cdk.aws_lambda.Runtime.PYTHON_3_12,
       handler: 'Github.lambda_handler',
       code: cdk.aws_lambda.Code.fromAsset('ApplicationCode/DataLoaders/StudentDeveloperPack'),
-      timeout: cdk.Duration.seconds(30)
+      layers: [StudentDeveloperPack_lambda_layer],
+      timeout: cdk.Duration.seconds(120)
     });
 
     S3Bucket.grantReadWrite(HackClubToolBox_lambda_fuction);
-    S3Bucket.grantReadWrite(GithubStudentPack_lambda_fuction);   
+    S3Bucket.grantReadWrite(GithubStudentPack_lambda_fuction);
 
     HackClubToolBox_lambda_fuction.addEnvironment('BUCKETNAME', S3Bucket.bucketName);
     GithubStudentPack_lambda_fuction.addEnvironment('BUCKETNAME', S3Bucket.bucketName);
