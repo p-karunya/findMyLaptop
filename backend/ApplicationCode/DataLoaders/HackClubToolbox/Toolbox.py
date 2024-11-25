@@ -48,6 +48,9 @@ def lambda_handler(event, context):
                 item.pop('icon', None)
                 item.pop('external', None)
 
+                if item['url'].startswith("/"):
+                    item['url'] = "https://toolbox.hackclub.com" + item['url']
+
                 if item['forUseBy'] == "clubbers":
                     item['forUseBy'] = "hackclubbers"
 

@@ -19,7 +19,6 @@ def lambda_handler(event, context):
         name = x.find('h3').text
         offer_details = x.find('div', class_='color-bg-subtle rounded-2')
         description = offer_details.find('p').text
-    #_____________________________________________
 
         perk['name'] = name
         perk['description'] = description
@@ -37,8 +36,6 @@ def lambda_handler(event, context):
                 offers_json[tag] = [perk]
     
     current_resources = {}
-
-    
 
     list_objects = [x['Key'] for x in client.list_objects_v2(Bucket=bucketname)['Contents']]
     if 'resources.json'  in list_objects :
