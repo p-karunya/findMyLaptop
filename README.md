@@ -9,9 +9,9 @@ graph TB;
     C[S3 bucket]
     D[Lambda Function]
     E[API Gateway]
-    A -->C
-    B -->C
-    C <-->D
+    A -->|Dataloader Lambda|C
+    B -->|Dataloader Lambda|C
+    C <--> D
     D --> E
 ```
 **The Tech Stack used to build the backed was:**
