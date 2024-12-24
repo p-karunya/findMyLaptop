@@ -21,10 +21,10 @@ interface offer {
 const OfferCard = (props: offer) => {
   console.log(props);
   let Source: string = "Unknown Source";
-  if (props.url.startsWith("https://hack.club")) {
+  if (props.url.startsWith("https://h")) {
       Source = "Hack Club Tool Box";
   }
-  else if (props.url.startsWith("https://g")) {
+  else if (props.forUseBy.startsWith("GH")) {
       Source = "GitHub";
   }
 
