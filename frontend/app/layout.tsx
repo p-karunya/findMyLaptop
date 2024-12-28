@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sansita.variable} antialiased bg-slate-200`}>
+      <body className={`${sansita.variable} antialiased bg-background`}>
         <Header/>
         {children}
       </body>

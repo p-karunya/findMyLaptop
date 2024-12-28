@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (  
-      <main className={`$ ${public_Sans.variable} antialiased bg-slate-200`}>
+      <main className={`$ ${public_Sans.variable} antialiased bg-background`}>
         {children}
       </main>
   );
