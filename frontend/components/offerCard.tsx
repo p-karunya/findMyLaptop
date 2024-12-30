@@ -29,7 +29,7 @@ const OfferCard = (props: offer) => {
   }
 
     return (
-        <Card className="inline-block "> 
+        <Card className="inline-block m-1 border-2"> 
             <CardHeader>
                 <CardTitle className='text-xl text-pretty'>{props.name}</CardTitle>
                 <CardDescription>{props.description}</CardDescription>
