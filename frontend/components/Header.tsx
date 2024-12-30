@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 import { Oi } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { BadgeDollarSign } from "lucide-react";
 
 
 // Import the font

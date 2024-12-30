@@ -8,7 +8,7 @@ const getSearchResults = async (query: string) => {
   return data
 }
 
-const SearchPage = async ({ params }: any) => {
+const SearchPage = async ({params}: { params: { query: string } }) => {
     const results = await getSearchResults(params.query)
     console.log(results)
     return (

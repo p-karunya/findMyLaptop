@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import OfferCard from "./offerCard";
 
 const CardHolder = (props: {children: React.ReactNode }) => {
     const num: number = props.children ? React.Children.count(props.children) : 0;
