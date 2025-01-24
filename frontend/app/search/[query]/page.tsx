@@ -1,24 +1,40 @@
-import CardHolder from "@/components/cardHolder"
-import OfferCard from "@/components/offerCard"
-import React from "react"
+import CardHolder from "@/components/cardHolder";
+import OfferCard from "@/components/offerCard";
+import React from "react";
 
-const getSearchResults = async (query: string) => {
-  const res = await fetch(`https://4az3n7mpz7.execute-api.us-east-1.amazonaws.com/dev/search?query=${query}`)
-  const data = await res.json()
-  return data
+interface Offer {
+  name: string;        // Name of the offer
+  description: string; // Description of the offer
+  url: string;         // URL for the offer
+  forUseBy: string;    // Intended audience (e.g., "GHstudents")
 }
 
-const SearchPage = async ({params}: { params: { query: string } }) => {
-    const results = await getSearchResults(params.query)
-    console.log(results)
+interface Response {
+  [category: string]: Offer[]; // A dynamic object where each key is a category, and the value is an array of offers
+}
+
+const getSearchResults = async (query: string): Promise<Response> => {
+  const res = await fetch(`https://4az3n7mpz7.execute-api.us-east-1.amazonaws.com/dev/search?query=${query}`);
+  const data: Response = await res.json();
+  console.log(res);
+  return data;
+};
+
+
+const SearchPage = async ({ params }: any) => {
+
+    const results: Response = await getSearchResults(params.query); // Fetch search results
+    console.log(results);
+
     return (
         <CardHolder>
-            {Object.values(results).map((values: any) => (
-                values.map((offers: any) => (<OfferCard {...offers}/> ))
-            ))}
+        {Object.keys(results).map((category) => (
+            results[category].map((offer: Offer) => (
+            <OfferCard key={offer.name} {...offer} />
+            ))
+        ))}   
         </CardHolder>
-    )
-  
-}
+    );
+};
 
-export default SearchPage
+export default SearchPage;
