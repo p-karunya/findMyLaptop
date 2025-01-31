@@ -1,7 +1,5 @@
 import CardHolder from "@/components/cardHolder";
 import OfferCard from "@/components/offerCard";
-import SearchBar from "@/components/searchBar";
-import { time } from "console";
 import React from "react";
 
 //I will change this 
@@ -50,6 +48,7 @@ const SearchPage = async ({ params }: any) => {
                         </CardHolder>
                 );
             } catch (error) {
+                console.error("Error fetching search results:", error);
                 <CardHolder>
                         {Object.keys(results).map((category) => (
                             results[category].map((offer: Offer) => (

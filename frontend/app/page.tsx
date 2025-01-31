@@ -1,6 +1,5 @@
 import React from "react";
 import SearchBar from "@/components/searchBar";
-import Image from "next/image";
 
 export default function Home() {
   // Use useState and destructure the value and setter
