@@ -28,7 +28,7 @@ const OfferCard = (props: offer) => {
   }
 
     return (
-        <Card className="inline-block m-1 border-2"> 
+        <Card className="inline-block m-1 border-4"> 
             <CardHeader>
                 <CardTitle className='text-xl text-pretty'>{props.name}</CardTitle>
                 <CardDescription>{props.description}</CardDescription>
@@ -36,7 +36,7 @@ const OfferCard = (props: offer) => {
         <CardFooter className='flex justify-between'>
             <p className='text-xs'> Source: {Source}</p>
             <Link href={props.url} passHref>
-              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full'>
+              <button className='bg-black hover:bg-slate-500 text-white font-bold py-2 px-4 rounded-full'>
                 Claim
               </button>
             </Link>

@@ -9,7 +9,7 @@ function openSearchResults(e: React.FormEvent<HTMLInputElement>) {
 
 const SearchBar = (props: {placeHolder: string, inputClassName: string, searchIconClassName: string}) => {
     return (
-        <div className="flex justify-center items-center w-full h-full">
+        <div className="flex justify-center items-center w-[100%] h-[100%]">
             <SearchIcon size={2} className={props.searchIconClassName}/>
             <Input
                 className={props.inputClassName}

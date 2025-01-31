@@ -29,18 +29,19 @@ const MainTitle = (props: {className?: string}) => {
 
 const Header = () => {
     return (
-        <div className="w-[99vw] h-1/4 flex justify-between items-center bg-foreground border-x-[2vw] border-foreground mb-2">
+        <div className="w-[100vw] h-[20%] flex justify-between items-center bg-foreground border-x-[2vw] border-foreground mb-2">
             <div className="h-full w-fit text-center flex flex-row items-center ">
                 <MainTitle className="text-5xl"/>
             </div>
-            <div className="w-[30%] h-[100%] flex flex-row justify-between items-center ">
-                <Link href="/" className="text-background">About</Link>
-                <Link href="/" className="text-background">Contribute</Link>
-                <Link href="/" className="text-background">Doc</Link>
-            </div>
+            
+            <Link href="https://github.com/p-karunya/findMyLaptop?tab=readme-ov-file#freestuff" className="text-background">README</Link>
+            <Link href="/" className="text-background">ABOUT</Link>
+            <Link href="/" className="text-background">CONTACT</Link>
+            {/*
             <div className="flex flex-col h-[90%] w-[20%] bg-[hsl(var(--secondary-background))] rounded-md  items-center text-background">
                 TaskBar
             </div>
+            */}  
         </div>
     );
 };
